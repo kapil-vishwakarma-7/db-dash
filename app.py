@@ -4,6 +4,11 @@ import os
 
 st.set_page_config(page_title="Leebroid Dashboard", layout="wide")
 
+# Initialize session state to avoid infinite rerun
+if "data_uploaded" not in st.session_state:
+    st.session_state["data_uploaded"] = False
+
+
 
 # Column name mapping across different files
 def shiprocket_column_mapping(df):
@@ -45,8 +50,12 @@ def delihvery_column_mapping(df):
 # Columns to display in table
 COLUMNS_TO_SHOW = ["Customer Name", "Mobile", "Tracking Number", "Pincode", "Order Date", "Courier", "Product", "Payment Type", "Quantity", "Current Status", "Price"]
 
+# Helpers
+def get_current_files():
+    return sorted([f for f in os.listdir("data") if f.endswith(('.csv', '.xlsx'))])
+
 # Load and normalize data from multiple files
-@st.cache_data
+# @st.cache_data(ttl=0)
 def load_data():
     dfs = []
     for file in os.listdir("data"):
@@ -70,9 +79,12 @@ def load_data():
             full_df[col] = None
     return full_df[COLUMNS_TO_SHOW].copy()
 
+# Only run load_data after rerun triggered
 df = load_data()
+if st.session_state["data_uploaded"]:
+    st.session_state["data_uploaded"] = False
 
-#unique values 
+# Unique values for dropdowns
 product_options = df["Current Status"].dropna().unique().tolist()
 
 
@@ -130,14 +142,22 @@ with tab3:
         for uploaded_file in uploaded_files:
             with open(os.path.join("data", uploaded_file.name), "wb") as f:
                 f.write(uploaded_file.getbuffer())
-        st.success(f"Uploaded {len(uploaded_files)} file(s) successfully.")
-        st.experimental_rerun()
+        st.session_state["df"] = None  # force reload
+        st.session_state["loaded_files"] = []
+        st.rerun()
 
     st.markdown("### 📄 Files in /data folder")
-    existing_files = os.listdir("data")
+    existing_files = get_current_files()
     if existing_files:
         for file in existing_files:
-            st.markdown(f"- {file}")
+            col1, col2 = st.columns([4, 1])
+            with col1:
+                st.markdown(f"- {file}")
+            with col2:
+                if st.button("❌ Delete", key=f"delete_{file}"):
+                    os.remove(os.path.join("data", file))
+                    st.session_state["df"] = None
+                    st.session_state["loaded_files"] = []
+                    st.rerun()
     else:
         st.info("No files currently available in the data folder.")
-
