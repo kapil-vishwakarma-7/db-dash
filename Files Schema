@@ -1,0 +1,135 @@
+# Delhivery
+Waybill
+Client
+Reference No.
+Risk Of Return
+Seller Name
+Pickup Location Name
+Product Description
+Pick Up Date
+Promised Delivery Date
+Estimated Delivery Date
+Delivered Date
+Consignee Name
+Consignee Address Score
+City
+PIN
+Type
+Amount
+COD Amount
+Status Type
+Current Status
+Remarks
+Dispatch Count
+Attempt count
+Origin Center
+First Bagging Date
+Shipment Type
+Master Waybill Number
+MPS Amount
+Action Date
+Pending / Returned Remarks
+MOT
+
+
+
+# Shiprocket 
+Order ID
+Forward ID
+Shiprocket Created At
+Channel
+Status
+Channel SKU
+Master SKU
+Product Name
+Product Category
+Product Quantity
+Channel Created At
+Customer Name
+Customer Email
+Customer Mobile
+Customer Alternate Phone
+Address Line 1
+Address Line 2
+Address City
+Address State
+Address Pincode
+Payment Method
+Product Price
+Order Total
+Tax
+Tax %
+Discount Value
+Product HSN
+Weight (KG)
+Dimensions (CM)
+Charged Weight
+Courier Company
+AWB Code
+SRX Premium LM AWB
+Shipping Bill URL
+AWB Assigned Date
+Pickup Location ID
+Pickup Address Name
+Pickup Scheduled Date
+Order Picked Up Date
+Pickup First Attempt Date
+Pickedup Timestamp
+Order Shipped Date
+EDD
+Delayed Reason
+Order Delivered Date
+RTO Address
+RTO Initiated Date
+RTO Delivered Date
+COD Remittance Date
+COD Payble Amount
+Remitted Amount
+CRF ID
+UTR No
+Zone
+COD Charges
+Freight Total Amount
+Customer_invoice_id
+Shipping Charges
+Pickup Exception Reason
+First Out For Delivery Date
+First_Pickup_Scheduled_Date
+Buyer's Lat/long
+Order Type
+Order Tags
+Invoice Date
+Pickup Code
+Eway Bill Nos
+Last Updated AT
+RTO Score Charges
+RTO Score Tax
+Delivery Boost Charges
+Delivery Boost Tax
+WhatsApp Tracking Charges
+WhatsApp Tracking Tax
+Brand Boost Charges
+Brand Boost Tax
+NDR 1 Attempt Date
+NDR 1 Remark
+NDR 2 Attempt Date
+NDR 2 Remark
+NDR 3 Attempt Date
+NDR 3 Remark
+Bridge Call Recording
+Hub Address
+Rto Risk
+RAD Datetimestamp
+BAG ID
+Pickup Pincode
+RTO Reason
+Verifier User ID
+Verifier Email
+Verifier Name
+Attempt Count
+Pickup Generated Date
+RTO WayBill
+Exchange Order Type
+Cancellation Reason
+
+
