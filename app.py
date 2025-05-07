@@ -3,6 +3,9 @@ import pandas as pd
 from data_utils import load_data
 from filters import apply_sidebar_filters
 from file_manager import handle_file_upload, show_file_list
+import plotly.express as px
+from analytics import render_sales_tab
+
 
 st.set_page_config(page_title="Leebroid Dashboard", layout="wide")
 
@@ -63,12 +66,7 @@ with tab1:
     st.dataframe(filtered_df)
 
 with tab2:
-    if "Order Date" in df.columns:
-        df["Order Date"] = pd.to_datetime(df["Order Date"], errors="coerce")
-        summary = df.groupby(df["Order Date"].dt.date).size().reset_index(name="Total Orders")
-        st.line_chart(summary.set_index("Order Date"))
-    else:
-        st.warning("⚠️ 'Order Date' column not found.")
+    render_sales_tab(df, tab2)
 
 with tab3:
     st.subheader("📁 Upload and Manage Data Files")
