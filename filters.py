@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 
 def apply_sidebar_filters(df):
-    st.sidebar.header("🔍 Search Orders")
-
     filtered_df = df.copy()
 
     # Order Date filter
