@@ -66,6 +66,8 @@ def load_data(columns_to_show):
         elif file.endswith(".xlsx"):
             df = pd.read_excel(path, engine="openpyxl", header=1)
             df = delhivery_column_mapping(df)
+            if "Product" in df.columns:
+                df["Quantity"] = df["Product"].apply(extract_quantity)
             df["Courier"] = "Delhivery"
         else:
             continue
