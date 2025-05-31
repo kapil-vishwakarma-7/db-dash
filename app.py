@@ -7,6 +7,8 @@ import plotly.express as px
 from analytics import render_sales_tab
 
 
+
+
 st.set_page_config(page_title="Leebroid Dashboard", layout="wide")
 
 # --- USER CREDENTIALS ---
@@ -42,8 +44,8 @@ if not st.session_state.authenticated:
 
 # Columns to display
 COLUMNS_TO_SHOW = [
-    "Customer Name", "Mobile", "Tracking Number", "Pincode", "Order Date",
-    "Courier", "Product", "Payment Type", "Quantity", "Current Status", "Price"
+    "Customer Name", "Mobile", "Tracking Number", "City", "Pincode", "Order Date",
+    "Courier", "Product", "Payment Type", "Quantity", "Current Status", "Price", "Full Address"
 ]
 
 # Load data
@@ -59,10 +61,12 @@ st.sidebar.button("🔓 Logout", on_click=lambda: st.session_state.update({"auth
 
 
 # Tabs
-tab1, tab2, tab3 = st.tabs(["🔎 Order Search", "📈 Daily Sales", "📁 Data Files"])
+tab1, tab2, tab3 = st.tabs(["🔎 Order Search", "📈 Analytics", "📁 Data Files"])
+
+
 
 with tab1:
-    st.write(f"### 🧾 {len(filtered_df)} matching orders")
+    st.write(f"###### 🧾 {len(filtered_df)} matching orders")
     st.dataframe(filtered_df)
 
 with tab2:
@@ -72,3 +76,4 @@ with tab3:
     st.subheader("📁 Upload and Manage Data Files")
     handle_file_upload()
     show_file_list()
+

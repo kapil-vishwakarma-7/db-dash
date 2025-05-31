@@ -4,8 +4,6 @@ import plotly.express as px
 
 def render_sales_tab(df, tab2):
     with tab2:
-        st.subheader("📈 Daily Sales Overview")
-
         if "Order Date" in df.columns:
             df["Order Date"] = pd.to_datetime(df["Order Date"], errors="coerce")
             df["Price"] = pd.to_numeric(df["Price"], errors="coerce")
